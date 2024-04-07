@@ -29,18 +29,26 @@ void bataille(){
 	
 	while (!c1.empty() && !c2.empty()){
 		if (c1[0]>c2[0]){
-			auto it=c2.begin();
-			c1.push_back(c2[0]);
-			advance(it,0);
-			c2.erase(it);
 			cout<<"Le joueur 1 remporte le pli avec "<<c1[0]<<" contre "<<c2[0]<<endl;
+			auto it=c2.begin();
+			auto ut=c1.begin();
+			c1.push_back(c2[0]);
+			c1.push_back(c1[0]);
+			advance(it,0);
+			advance(ut,0);
+			c1.erase(ut);
+			c2.erase(it);
 		}
 		else if(c1[0]<c2[0]){
+			cout<<"Le joueur 2 remporte le pli avec "<<c2[0]<<" contre "<<c1[0]<<endl;
 			auto it=c1.begin();
+			auto ut=c2.begin();
 			c2.push_back(c2[0]);
+			c2.push_back(c1[0]);
+			advance(ut,0);
 			advance(it,0);
 			c1.erase(it);
-			cout<<"Le joueur 2 remporte le pli avec "<<c2[0]<<" contre "<<c1[0]<<endl;
+			c2.erase(ut);
 		}
 		else if(c1[0]==c2[0]){
 			while (c1[0] == c2[0]) {
